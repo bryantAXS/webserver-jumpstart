@@ -1,8 +1,9 @@
 ## Provision Server
 
-1. Setup ```deploy.rb``` file
-2. Adjust ```packages/mysql/mysql_secure_installation_no_ask``` and add custom passwords
-3. Adjust ```packages/mailserver/postfix/templates/*``` files and set correct settings
+1. Rename ```_deploy.rb``` to ```deploy.rb```
+2. Configure ```deploy.rb``` file
+3. Adjust ```packages/mysql/mysql_secure_installation_no_ask``` and add custom passwords
+4. Adjust ```packages/mailserver/postfix/templates/*``` files and set correct settings
 
 ## Create V-host
 
