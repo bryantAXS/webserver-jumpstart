@@ -1,0 +1,6 @@
+[mysqld]
+max_connections        = 75
+table_cache            = 32
+
+[isamchk]
+key_buffer    = 32M
