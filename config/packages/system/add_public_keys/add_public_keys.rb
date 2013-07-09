@@ -40,7 +40,7 @@ package :root_account_keys do
 
   if Package.exists?(:public_keys) then
 
-    # runner "mkdir /root/.ssh"
+    runner "mkdir /root/.ssh"
     runner "touch /root/.ssh/authorized_keys"
 
     authorized_keys_file = "/root/.ssh/authorized_keys"
