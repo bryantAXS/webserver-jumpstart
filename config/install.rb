@@ -1,12 +1,12 @@
 require File.join(File.dirname(__FILE__), 'base')
 
 policy :myapp, :roles => :app do
-  # requires :system
-  # requires :webserver
-  # requires :php
-  # requires :mysql
+  requires :system
+  requires :webserver
+  requires :php
+  requires :mysql
   requires :mailserver
-  # requires :cleanup
+  requires :cleanup
 end
 
 deployment do
