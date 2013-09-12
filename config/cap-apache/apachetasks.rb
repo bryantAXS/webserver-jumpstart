@@ -17,8 +17,13 @@ if Capistrano::Configuration.instance(false)
             ServerName #{domain}
             #{unless subdomain then "ServerAlias www.#{domain}" end}
             DocumentRoot #{if doc_root then "/var/www/#{domain}/current/" + doc_root else "/var/www/#{domain}/current" end}
+            ErrorLog "/var/www/#{domain}/logs/error_log"
+            CustomLog "/var/www/#{domain}/logs/access_log" common
           </VirtualHost>
           CONFIG
+
+          run "sudo mkdir /var/www/#{domain}"
+          run "sudo mkdir /var/www/#{domain}/logs"
 
           system 'mkdir tmp'
           file = File.new("tmp/#{domain}", "w")
