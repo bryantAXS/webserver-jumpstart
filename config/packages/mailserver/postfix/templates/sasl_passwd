@@ -1,1 +1,1 @@
-[smtp.gmail.com]:587    email@authenticff.com:Mug77rhnHcmGBi
+[smtp.gmail.com]:587    <%= gmail_address%>:<%= gmail_password %>

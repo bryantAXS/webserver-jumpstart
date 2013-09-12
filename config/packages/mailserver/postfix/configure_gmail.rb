@@ -22,6 +22,7 @@ package :upload_main do
   puts @domain
   puts @hostname
 
+  #template_search_path File.dirname(__FILE__)
   #file "/etc/postfix/main.cf", :contents => render("main.cf")
 
   transfer File.join(File.dirname(__FILE__),"templates","main.cf"), "/etc/postfix/main.cf"
@@ -30,11 +31,23 @@ package :upload_main do
 end
 
 package :upload_sasl do
+
+  @gmail_address = Package.fetch("gmail_address") || ""
+  @gmail_password = Package.fetch("gmail_password") || ""
+
+  puts @gmail_address
+  puts @gmail_password
+
   transfer File.join(File.dirname(__FILE__),"templates","sasl_passwd"), "/etc/postfix/sasl_passwd"
   verify{ has_file "/etc/postfix/sasl_passwd" }
 end
 
 package :upload_mailname do
+
+  @mailname = Package.fetch("mailname") || ""
+
+  puts @mailname
+
   transfer File.join(File.dirname(__FILE__),"teamplates","mailname"), "/etc/mailname"
   verify{ has_file "/etc/mailname" }
 end

@@ -5,13 +5,9 @@
 3. Adjust ```packages/mysql/mysql_secure_installation_no_ask``` and add custom passwords
 4. Adjust ```packages/mailserver/postfix/templates/*``` files and set correct settings
 
-## Create V-host
+## Create V-host for initial site
 
 run ```cap -T ``` to view apache related commands
-
-## Sync remote and local assets
-
-run ```cap -T ``` to view sync commands, note: this has not been tested thouroughly
 
 ## ToDo
 
