@@ -16,39 +16,36 @@ package :configure_gmail do
 end
 
 package :upload_main do
-  @domain = Package.fetch("domain") || ""
-  @hostname = Package.fetch("hostname") || ""
 
-  puts @domain
-  puts @hostname
+  @domain = Package.fetch(:domain) || ""
+  @hostname = Package.fetch(:hostname) || ""
 
-  #template_search_path File.dirname(__FILE__)
-  #file "/etc/postfix/main.cf", :contents => render("main.cf")
+  template_search_path File.dirname(__FILE__)
+  file "/etc/postfix/main.cf", :contents => render("tmpl_main.cf")
 
-  transfer File.join(File.dirname(__FILE__),"templates","main.cf"), "/etc/postfix/main.cf"
   verify{ has_file "/etc/postfix/main.cf" }
 
 end
 
 package :upload_sasl do
 
-  @gmail_address = Package.fetch("gmail_address") || ""
-  @gmail_password = Package.fetch("gmail_password") || ""
+  @gmail_address = Package.fetch(:gmail_address) || ""
+  @gmail_password = Package.fetch(:gmail_password) || ""
 
-  puts @gmail_address
-  puts @gmail_password
+  template_search_path File.dirname(__FILE__)
+  file "/etc/postfix/sasl_passwd", :contents => render("tmpl_sasl_passwd")
 
-  transfer File.join(File.dirname(__FILE__),"templates","sasl_passwd"), "/etc/postfix/sasl_passwd"
   verify{ has_file "/etc/postfix/sasl_passwd" }
+
 end
 
 package :upload_mailname do
 
-  @mailname = Package.fetch("mailname") || ""
+  @mailname = Package.fetch(:mailname) || ""
 
-  puts @mailname
+  template_search_path File.dirname(__FILE__)
+  file "/etc/mailname", :contents => render("tmpl_mailname")
 
-  transfer File.join(File.dirname(__FILE__),"teamplates","mailname"), "/etc/mailname"
   verify{ has_file "/etc/mailname" }
 end
 
