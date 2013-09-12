@@ -29,7 +29,7 @@ if Capistrano::Configuration.instance(false)
           file = File.new("tmp/#{domain}", "w")
           file << config
           file.close
-          system "rsync -rvz -e 'ssh -p #{port}' --progress tmp/#{domain} #{user}@#{ip}:/etc/apache2/sites-available/#{domain}"
+          system "rsync -rvz -e 'ssh -p #{port}' --progress tmp/#{domain} #{user}@#{ip}:/etc/apache2/sites-available/#{domain}.conf"
           File.delete("tmp/#{domain}")
           run "sudo a2ensite #{domain}"
           run "sudo /etc/init.d/apache2 restart"

@@ -1,7 +1,7 @@
 package :apache do
   packages = [
     :apache2,
-    :libapache2_mod_ruby,
+    # :libapache2_mod_ruby,
     :libapache2_mod_php5,
     :enable_mod_rewrite
   ]
@@ -11,7 +11,9 @@ end
 
 package :apache2 do
   apt "apache2"
-  verify { has_apt "apache2"}
+  verify {
+    has_apt "apache2"
+  }
 end
 
 package :libapache2_mod_ruby do
